@@ -1,0 +1,13 @@
+.layout {
+    border-radius: 8px;
+   overflow: hidden;
+    margin: 0 auto;
+    max-width: calc(60% - 8px);
+    width: 100%;
+    height: calc(100vh - 16px);
+}
+
+.footer  {
+    background-color: #001529;
+    color: #fff
+}

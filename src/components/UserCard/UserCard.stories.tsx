@@ -1,12 +1,12 @@
 import {Meta, StoryObj} from "@storybook/react";
-import UserCard from "./UserCard.tsx";
+import {UserCard} from "./UserCard.tsx";
 
 
 const meta: Meta<typeof AddItemForm> = {
     title: 'User/UserCard',
     component: UserCard,
     parameters: {
-        layout: 'centered',
+        layout: 'fullscreen',
     },
     tags: ['autodocs'],
     args: {

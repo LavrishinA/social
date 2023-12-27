@@ -1,26 +1,34 @@
-import {Avatar, Card} from "antd";
+import {Avatar, Card, Image} from "antd";
+import s from "./UserCard.module.css"
+import {FC} from "react";
 
-const {Meta} = Card;
 
-const UserCard = ({name, avatar, status, photo}) => {
+export const UserCard: FC<UserCardProps> = ({name, avatar, status, photo}) => {
     return (
-        <Card
-            headStyle={{background: "red"}}
-            style={{ width: 300 }}
-            cover={
-                <img
-                    alt="profile photo"
-                    src={photo}
-                />
-            }>
-            <Meta
+        <Card className={s.card}
+
+              cover={
+                      <Image
+                          style={{ width: "15em" }}
+                          preview={false}
+                          src={photo}
+                          alt="profile photo"
+                      />
+              }>
+            <Card.Meta
+                className={s.cardMeta}
                 avatar={<Avatar src={avatar}/>}
                 title={name}
                 description={status}
             />
-        </Card
-          >
+        </Card>
     );
 };
 
-export default UserCard;
+type UserCardProps = {
+    name: string
+    avatar: string
+    status: string
+    photo: string
+
+}

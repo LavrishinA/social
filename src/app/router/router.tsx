@@ -1,16 +1,19 @@
 import {createBrowserRouter} from "react-router-dom";
 import {AppLayout} from "../../pages/layout/AppLayout.tsx";
-import Profile from "../../pages/Profile/Profile.tsx";
-import {Messages} from "../../pages/Messages/Messages.tsx";
-import {Users} from "../../pages/Users/Users.tsx";
+import {ProfilePage} from "../../pages/ProfilePage/ProfilePage.tsx";
+import {MessagesPage} from "../../pages/MessagesPage/MessagesPage.tsx";
+import {UsersPage} from "../../pages/UsersPage/UsersPage.tsx";
+
+
+
 
 export const router = createBrowserRouter([
     {
         element: <AppLayout/>,
         children: [
-            {path: '/', element: <Profile/>},
-            {path: '/messages', element: <Messages/>},
-            {path: '/users', element: <Users/>}
+            {path: '/', element: <ProfilePage/>},
+            {path: '/messages', element: <MessagesPage/>},
+            {path: '/users', element: <UsersPage/>}
         ]
     },
 

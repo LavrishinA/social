@@ -1,6 +1,6 @@
 
 
-export const Messages = () => {
+export const MessagesPage = () => {
     return (
         <div>
             Messages

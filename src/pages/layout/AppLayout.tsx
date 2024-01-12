@@ -1,6 +1,6 @@
 import {Layout,} from 'antd';
 import {Outlet} from "react-router-dom";
-import {NavMenu} from "../../components/NavMenu/NavMenu.tsx";
+import {NavMenu} from "./NavMenu/NavMenu.tsx";
 const {Header, Footer, Content} = Layout;
 import s from "./AppLayout..module.css"
 

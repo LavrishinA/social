@@ -2,7 +2,7 @@ import {Meta, StoryObj} from "@storybook/react";
 import {UserCard} from "./UserCard.tsx";
 
 
-const meta: Meta<typeof AddItemForm> = {
+const meta: Meta<typeof UserCard> = {
     title: 'User/UserCard',
     component: UserCard,
     parameters: {
@@ -13,7 +13,6 @@ const meta: Meta<typeof AddItemForm> = {
         name: "User name",
         status: "Hello it-incubator!",
         photo: "https://cdn-icons-png.flaticon.com/512/21/21104.png",
-        avatar: "https://xsgames.co/randomusers/assets/avatars/pixel/15.jpg"
     }
 };
 

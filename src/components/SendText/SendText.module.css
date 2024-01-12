@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 5px;
+
+}
+
+.textarea {
+    width: 50%;
+}
+
+

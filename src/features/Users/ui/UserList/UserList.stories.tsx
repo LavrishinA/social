@@ -3,7 +3,7 @@ import {UserList} from "./UserList.tsx";
 
 
 const meta: Meta<typeof UserList> = {
-    title: 'User/UserList',
+    title: 'Profile/UserList',
     component: UserList,
     parameters: {
         layout: 'fullscreen',

@@ -1,15 +1,16 @@
 import {Button, Col, Image, Row, Space, Typography} from "antd";
 import {FC} from "react";
+import {ProfileArgs} from "features/Profile/api/profileApi.tsx";
 const {Text, Title} = Typography;
 
-export const UserCard: FC<UserCardProps> = ({name, status, photo}) => {
+export const UserCard: FC<ProfileArgs> = (props) => {
     return (
         <Row justify="center" style={{paddingTop: '24px'}}>
             <Col xs={24} md={18} lg={12}>
                 <Row gutter={16}>
                     <Col xs={24} md={12}>
                         <Image
-                            src={photo}
+                            src={props.photos?.large ?? "https://cdn-icons-png.flaticon.com/512/21/21104.png"}
                             alt="#"
                             preview={false}
                             style={{objectFit: 'cover', width: '100%', height: '100%'}}
@@ -17,10 +18,10 @@ export const UserCard: FC<UserCardProps> = ({name, status, photo}) => {
                     </Col>
                     <Col xs={24} md={12}>
                         <Space direction="vertical" align="center" style={{padding: '16px'}}>
-                            <Title level={2}>{name}</Title>
+                            <Title level={2}>{props.fullName}</Title>
 
                             <Text style={{textAlign: 'center', color: 'gray.700'}}>
-                                {status}
+                                {props?.aboutMe}
                             </Text>
 
                             <Space
@@ -53,8 +54,3 @@ export const UserCard: FC<UserCardProps> = ({name, status, photo}) => {
     );
 };
 
-type UserCardProps = {
-    name: string
-    status: string
-    photo: string
-}

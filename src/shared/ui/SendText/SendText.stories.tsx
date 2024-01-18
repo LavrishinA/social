@@ -12,7 +12,7 @@ const meta: Meta<typeof SendText> = {
     argTypes: {
         onClick: {
             description: "send message",
-            action: ("User send message or post text")
+            action: ("Profile send message or post text")
         },
 
         onChange: {

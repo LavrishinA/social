@@ -1,18 +1,18 @@
 import {Meta, StoryObj} from "@storybook/react";
-import {UserCard} from "features/User/ui/UserCard/UserCard.tsx";
+import {UserCard} from "features/Profile/ui/UserCard/UserCard.tsx";
 
 
 const meta: Meta<typeof UserCard> = {
-    title: 'User/UserCard',
+    title: 'Profile/UserCard',
     component: UserCard,
     parameters: {
         layout: 'fullscreen',
     },
     tags: ['autodocs'],
     args: {
-        name: "User name",
-        status: "Hello it-incubator!",
-        photo: "https://cdn-icons-png.flaticon.com/512/21/21104.png",
+        fullName: "Profile name",
+        aboutMe: "Hello it-incubator!",
+        photos: {large: "https://cdn-icons-png.flaticon.com/512/21/21104.png"},
     }
 };
 

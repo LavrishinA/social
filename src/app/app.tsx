@@ -3,5 +3,8 @@ import {router} from "./router/router.tsx";
 
 
 export const App = () => {
-    return <RouterProvider router={router}/>
+    return (
+
+        <RouterProvider router={router}/>)
+
 };

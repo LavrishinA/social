@@ -1,7 +1,5 @@
 import {Button, Col, Image, Row, Space, Typography} from "antd";
 import {FC} from "react";
-
-
 const {Text, Title} = Typography;
 
 export const UserCard: FC<UserCardProps> = ({name, status, photo}) => {

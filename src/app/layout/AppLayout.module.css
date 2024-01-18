@@ -7,7 +7,12 @@
     height: calc(100vh - 16px);
 }
 
+.content  {
+    overflow: auto;
+}
+
 .footer  {
     background-color: #001529;
-    color: #fff
+    color: #fff;
+    z-index: 1;
 }

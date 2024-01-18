@@ -1,17 +1,16 @@
-import {createBrowserRouter} from "react-router-dom";
-import {AppLayout} from "../../pages/layout/AppLayout.tsx";
-import {ProfilePage} from "../../pages/ProfilePage/ProfilePage.tsx";
-import {MessagesPage} from "../../pages/MessagesPage/MessagesPage.tsx";
-import {UsersPage} from "../../pages/UsersPage/UsersPage.tsx";
+import {createBrowserRouter, Navigate} from "react-router-dom";
 
-
+import {MessagesPage, ProfilePage, UsersPage} from "pages";
+import {AppLayout} from "app/layout/AppLayout.tsx";
 
 
 export const router = createBrowserRouter([
     {
+        path: "/",
         element: <AppLayout/>,
         children: [
-            {path: '/', element: <ProfilePage/>},
+            { index: true, element: <Navigate to="/profile/:id" replace /> },
+            {path: '/profile/:id', element: <ProfilePage/>},
             {path: '/messages', element: <MessagesPage/>},
             {path: '/users', element: <UsersPage/>}
         ]

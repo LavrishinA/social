@@ -10,26 +10,26 @@ export class ProfileApi {
 
 
 export type ProfileArgs = {
-    aboutMe?: string
-    contacts?: ProfileContacts
-    lookingForAJob?: boolean
-    lookingForAJobDescription?: string
-    fullName?: string
-    userId?: number
-    photos?: {
-        small?: string
-        large?: string
+    aboutMe: string  | null
+    contacts: ProfileContacts | null
+    lookingForAJob: boolean | null
+    lookingForAJobDescription?: string | null
+    fullName: string
+    userId: number
+    photos: {
+        small: string | null
+        large: string | null
     }
 
 }
 
 export type ProfileContacts = {
-    facebook?: string
-    website?: any
-    vk?: string
-    twitter?: string
-    instagram?: string
-    youtube?: any
-    github?: string
-    mainLink?: any
+    facebook: string | null
+    website: any | null
+    vk: string | null
+    twitter: string | null
+    instagram: string | null
+    youtube: any | null
+    github: string | null
+    mainLink: any | null
 }

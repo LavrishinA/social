@@ -1,6 +1,7 @@
-import {Button, Col, Image, Row, Space, Typography} from "antd";
+import {Col, Image, Row, Space, Typography} from "antd";
 import {FC} from "react";
 import {ProfileArgs} from "features/Profile/api/profileApi.tsx";
+
 const {Text, Title} = Typography;
 
 export const UserCard: FC<ProfileArgs> = (props) => {
@@ -21,7 +22,7 @@ export const UserCard: FC<ProfileArgs> = (props) => {
                             <Title level={2}>{props.fullName}</Title>
 
                             <Text style={{textAlign: 'center', color: 'gray.700'}}>
-                                {props?.aboutMe}
+                                {props.aboutMe}
                             </Text>
 
                             <Space
@@ -32,19 +33,6 @@ export const UserCard: FC<ProfileArgs> = (props) => {
                                     display: 'flex',
                                     justifyContent: 'space-between',
                                 }}>
-                                <Button
-                                    type="primary"
-                                    ghost
-                                    shape="round"
-                                    style={{
-                                        flex: 1,
-                                        backgroundColor: 'blue.400',
-                                        color: '#444',
-                                        boxShadow:
-                                            '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)',
-                                    }}>
-                                    Follow
-                                </Button>
                             </Space>
                         </Space>
                     </Col>

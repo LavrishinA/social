@@ -12,7 +12,7 @@ const meta: Meta<typeof UserCard> = {
     args: {
         fullName: "Profile name",
         aboutMe: "Hello it-incubator!",
-        photos: {large: "https://cdn-icons-png.flaticon.com/512/21/21104.png"},
+        photos: {large: "https://cdn-icons-png.flaticon.com/512/21/21104.png", small: null},
     }
 };
 

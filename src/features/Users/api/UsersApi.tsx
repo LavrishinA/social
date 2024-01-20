@@ -1,16 +1,23 @@
-import  {AxiosResponse} from "axios";
+import {AxiosResponse} from "axios";
 import {instance} from "shared/lib/instance.ts";
-
 
 
 export class UsersApi {
     static getUsers(page: number, count: number) {
-        return instance.get<UsersResponseType, AxiosResponse<UsersResponseType>>(`/users?page=${page}&count=${count}`)
+        return instance.get<UsersListResponse, AxiosResponse<UsersListResponse>>(`/users?page=${page}&count=${count}`)
+    }
+
+    static followUser(id: number) {
+        return instance.post<FollowUser, AxiosResponse<FollowUser>>(`/follow/${id}`)
+    }
+
+    static unfollowUser(id: number) {
+        return instance.delete<FollowUser, AxiosResponse<FollowUser>>(`/follow/${id}`)
     }
 }
 
 
-export type User = {
+export type UsersListItemArg = {
     name: string
     id: number,
     uniqueUrlName: string | null,
@@ -22,8 +29,14 @@ export type User = {
     followed: boolean
 }
 
-export type UsersResponseType = {
-    items: User[]
-    totalCount: string
-    error: string
+export type UsersListResponse = {
+    items: UsersListItemArg[]
+    totalCount: number
+    error: string | null
+}
+
+type FollowUser = {
+    data: {}
+    resultCode: number
+    messages: string[]
 }

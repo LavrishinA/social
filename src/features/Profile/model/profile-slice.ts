@@ -5,8 +5,8 @@ const createProfileSlice = buildCreateSlice({
     creators: {asyncThunk: asyncThunkCreator},
 })
 
-const initialState: ProfileSliceArgs = {
-    profile: {}
+const initialState = {
+    profile: {} as ProfileArgs
 }
 
 const slice = createProfileSlice({
@@ -26,7 +26,3 @@ const slice = createProfileSlice({
 
 export const profileReducer = slice.reducer
 export const profileActions = slice.actions
-
-type ProfileSliceArgs = {
-    profile: ProfileArgs
-}

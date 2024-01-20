@@ -1,7 +1,7 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
 
 import {MessagesPage, ProfilePage, UsersPage} from "pages";
-import {AppLayout} from "app/layout/AppLayout.tsx";
+import {AppLayout} from "pages/layout/AppLayout.tsx";
 
 
 export const router = createBrowserRouter([

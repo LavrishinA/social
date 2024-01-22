@@ -9,6 +9,7 @@ const meta: Meta<typeof UserList> = {
         layout: 'fullscreen',
     },
     args: {
+// @ts-ignore
         items: [
             {
                 "name": "Xacer",

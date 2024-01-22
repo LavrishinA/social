@@ -7,29 +7,49 @@ const createAuthSlice = buildCreateSlice({
 
 const initialState = {
     user: {} as AuthData,
-    isLoading: false as boolean,
-    error: ""
+    isAuth: false as boolean,
+    isLoading: false,
+    error: null as string | null
 }
 
 const slice = createAuthSlice({
     name: "auth",
     initialState,
-    reducers: (create) => ({
-        isAuthorized: create.asyncThunk(async (_arg: undefined, thunkAPI) => {
-            const {rejectWithValue} = thunkAPI
-            const res = await AuthApi.isAuth()
-            if (res.data.resultCode === 0) {
-                return res.data.data as AuthData
-            } else {
-                return rejectWithValue(null)
-            }
+    reducers: (create) => {
+        const createAThunk =
+            create.asyncThunk.withTypes<{ rejectValue: { error: string } }>()
+        return {
+            isAuthorized: createAThunk(async (_arg: undefined, thunkAPI) => {
+                const {rejectWithValue} = thunkAPI
 
-        }, {
-            fulfilled: (state, action) => {
-                state.user = {...action.payload}
-            }
-        })
-    })
+                const res = await AuthApi.isAuth()
+                if (res.data.resultCode === 0) {
+                    return res.data.data as AuthData
+                } else {
+                    return rejectWithValue({error: res.data.messages[0]})
+                }
+
+
+            }, {
+                pending: (state) => {
+                    state.isLoading = true
+                },
+                fulfilled: (state, action) => {
+                    state.user = {...action.payload}
+                    state.isAuth = true
+                },
+                rejected: (state, action) => {
+                    if (action.payload) {
+                        state.error = action.payload.error
+                    }
+
+                },
+                settled: (state) => {
+                    state.isLoading = false
+                }
+            })
+        }
+    }
 })
 
 export const authReducer = slice.reducer

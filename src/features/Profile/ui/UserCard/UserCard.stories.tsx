@@ -1,5 +1,6 @@
 import {Meta, StoryObj} from "@storybook/react";
-import {UserCard} from "features/Profile/ui/UserCard/UserCard.tsx";
+import { UserCard } from "./UserCard";
+
 
 
 const meta: Meta<typeof UserCard> = {

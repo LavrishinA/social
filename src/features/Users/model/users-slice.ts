@@ -1,5 +1,6 @@
 import {asyncThunkCreator, buildCreateSlice, PayloadAction} from "@reduxjs/toolkit";
-import {UsersApi, UsersListItemArg, UsersListResponse} from "features/Users/api/UsersApi.tsx";
+import {UsersApi, UsersListItemArg, UsersListResponse} from "../api/UsersApi";
+
 
 
 const initialState: UsersListArg = {

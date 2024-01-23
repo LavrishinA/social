@@ -1,10 +1,11 @@
 import {Alert, Layout, notification, Spin} from 'antd';
 import {Outlet, useNavigate} from "react-router-dom";
 import {NavMenu} from 'shared/ui/NavMenu/NavMenu.tsx';
+import {useAppDispatch, useAppSelector} from "app/store.ts";
+import {authActions} from "features/Auth";
 import s from "pages/layout/AppLayout.module.css"
 import {useEffect} from "react";
-import {useAppDispatch, useAppSelector} from "app/store.ts";
-import {authActions} from "features/Auth/model/auth-slice.ts";
+
 
 const {Header, Footer, Content} = Layout;
 

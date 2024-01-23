@@ -1,5 +1,7 @@
 import {asyncThunkCreator, buildCreateSlice} from "@reduxjs/toolkit";
-import {ProfileApi, ProfileArgs} from "../api/profileApi.tsx";
+import {ProfileApi, ProfileArgs} from "../api/profileApi";
+
+
 
 const createProfileSlice = buildCreateSlice({
     creators: {asyncThunk: asyncThunkCreator},

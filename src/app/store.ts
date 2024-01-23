@@ -1,8 +1,9 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {usersReducers} from "features/Users/model/users-slice.ts";
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
-import {profileReducer} from "features/Profile/model/profile-slice.ts";
-import {authReducer} from "features/Auth/model/auth-slice.ts";
+import {authReducer} from "features/Auth";
+import {profileReducer} from "features/Profile";
+import {usersReducers} from "features/Users";
+
 
 export const store = configureStore({
     reducer: {

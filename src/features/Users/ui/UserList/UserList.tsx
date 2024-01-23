@@ -1,7 +1,8 @@
 import {Avatar, Button, ConfigProvider, List, Skeleton} from "antd";
+import { UsersListItemArg } from "features/Users";
 import {FC} from "react";
 import {Link} from "react-router-dom";
-import {UsersListItemArg} from "features/Users/api/UsersApi.tsx";
+
 
 
 export const UserList: FC<UserListArgs> = ({loading, items, pageSize, current, total, onChangePage, onFollow, onUnfollow}) => {

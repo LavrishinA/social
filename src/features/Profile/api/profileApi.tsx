@@ -4,13 +4,13 @@ import {AxiosResponse} from "axios";
 
 export class ProfileApi {
     static getProfile(userId: string) {
-        return instance.get<ProfileArgs, AxiosResponse<ProfileArgs>, {userId: number}>(`/profile/${userId}`)
+        return instance.get<ProfileArgs, AxiosResponse<ProfileArgs>, { userId: number }>(`/profile/${userId}`)
     }
 }
 
 
 export type ProfileArgs = {
-    aboutMe: string  | null
+    aboutMe: string | null
     contacts: ProfileContacts | null
     lookingForAJob: boolean | null
     lookingForAJobDescription?: string | null
@@ -23,7 +23,7 @@ export type ProfileArgs = {
 
 }
 
-export type ProfileContacts = {
+type ProfileContacts = {
     facebook: string | null
     website: any | null
     vk: string | null

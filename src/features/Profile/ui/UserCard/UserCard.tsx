@@ -1,6 +1,7 @@
 import {Col, Image, Row, Space, Typography} from "antd";
+import { ProfileArgs } from "features/Profile";
 import {FC} from "react";
-import {ProfileArgs} from "features/Profile/api/profileApi.tsx";
+
 
 const {Text, Title} = Typography;
 

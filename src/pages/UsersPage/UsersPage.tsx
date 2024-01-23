@@ -1,7 +1,6 @@
 import {useAppDispatch, useAppSelector} from "app/store.ts";
 import {useEffect} from "react";
-import {usersActions} from "features/Users/model/users-slice.ts";
-import {UserList} from "features/Users/ui/UserList/UserList.tsx";
+import {UserList, usersActions} from "features/Users";
 
 export const UsersPage = () => {
 

@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 export const items = [
     {
         key: 'profile',
-        label: <NavLink to='/'>Profile</NavLink>,
+        label: <NavLink to='/profile'>Profile</NavLink>,
     },
     {
         key: 'messages',

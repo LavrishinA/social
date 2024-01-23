@@ -7,3 +7,10 @@ export  const instance = axios.create({
         'API-KEY': '901196af-03b1-43ed-ba81-7c0d3e'
     }
 })
+
+
+export type CommonResponse = {
+    data: {}
+    resultCode: number
+    messages: string[]
+}

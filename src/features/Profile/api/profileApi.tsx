@@ -1,11 +1,18 @@
-import {instance} from "shared/lib/instance.ts";
+import {CommonResponse, instance} from "shared/lib/instance.ts";
 import {AxiosResponse} from "axios";
 
 
 export class ProfileApi {
-    static getProfile(userId: string) {
-        return instance.get<ProfileArgs, AxiosResponse<ProfileArgs>, { userId: number }>(`/profile/${userId}`)
+    static getProfile(userId: number) {
+        return instance.get<ProfileArgs, AxiosResponse<ProfileArgs>>(`/profile/${userId}`)
     }
+    static getStatus(userId: number) {
+        return instance.get<StatusArg, AxiosResponse<StatusArg>>(`/profile/status/${userId}`)
+    }
+    static updateStatus(status: string) {
+        return instance.put<CommonResponse, AxiosResponse<CommonResponse>, {status: string}>('/profile/status', {status})
+    }
+
 }
 
 
@@ -33,3 +40,5 @@ type ProfileContacts = {
     github: string | null
     mainLink: any | null
 }
+
+export type StatusArg = string | null

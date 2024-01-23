@@ -1,5 +1,5 @@
 import {AxiosResponse} from "axios";
-import {instance} from "shared/lib/instance.ts";
+import {CommonResponse, instance} from "shared/lib/instance.ts";
 
 
 export class UsersApi {
@@ -8,11 +8,11 @@ export class UsersApi {
     }
 
     static followUser(id: number) {
-        return instance.post<FollowUser, AxiosResponse<FollowUser>>(`/follow/${id}`)
+        return instance.post<CommonResponse, AxiosResponse<CommonResponse>>(`/follow/${id}`)
     }
 
     static unfollowUser(id: number) {
-        return instance.delete<FollowUser, AxiosResponse<FollowUser>>(`/follow/${id}`)
+        return instance.delete<CommonResponse, AxiosResponse<CommonResponse>>(`/follow/${id}`)
     }
 }
 
@@ -35,8 +35,4 @@ export type UsersListResponse = {
     error: string | null
 }
 
-type FollowUser = {
-    data: {}
-    resultCode: number
-    messages: string[]
-}
+

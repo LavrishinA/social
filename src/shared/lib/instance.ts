@@ -9,8 +9,8 @@ export  const instance = axios.create({
 })
 
 
-export type CommonResponse = {
-    data: {}
+export type CommonResponse<T = {}> = {
+    data: T
     resultCode: number
     messages: string[]
 }

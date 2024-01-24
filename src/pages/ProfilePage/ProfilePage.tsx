@@ -1,12 +1,13 @@
 import {useParams} from "react-router-dom";
 import {useEffect} from "react";
 import {useAppDispatch, useAppSelector} from "app/store.ts";
-import {UserCard, profileActions, ProfileStatus} from "features/Profile";
-import {notification} from "antd";
+import {profileActions, ProfileStatus, UserCard} from "features/Profile";
+import {useNotificationAntd} from "shared";
+
 
 export const ProfilePage = () => {
     const {id} = useParams()
-
+    const {contextHolder, openNotificationWithIcon} = useNotificationAntd()
     const dispatch = useAppDispatch()
     const authProfile = useAppSelector(state => state.auth.user.id)
     const profile = useAppSelector(state => state.profile.profile)
@@ -24,11 +25,12 @@ export const ProfilePage = () => {
     }, [id, authProfile]);
 
     const statusHandler = (status: string) => dispatch(profileActions.updateStatus(status)).unwrap()
-        .then(() => notification.success({message: "Status updated"}))
-        .catch(e => notification.error({message: e.message}))
+        .then(() => openNotificationWithIcon("success", {message: "Status updated"}))
+        .catch(e => openNotificationWithIcon ("error", {message: e.message}))
 
     return (
         <>
+            {contextHolder}
             <UserCard {...profile}/>
             <ProfileStatus editable={!id} status={status} onChange={statusHandler}/>
         </>

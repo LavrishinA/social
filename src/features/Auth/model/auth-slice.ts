@@ -1,5 +1,6 @@
 import {asyncThunkCreator, buildCreateSlice} from "@reduxjs/toolkit";
 import {AuthApi, AuthData} from "features/Auth/api/AuthApi.ts";
+import {FieldType} from "features/Auth/ui/Login.tsx";
 
 const createAuthSlice = buildCreateSlice({
     creators: {asyncThunk: asyncThunkCreator},
@@ -46,6 +47,31 @@ const slice = createAuthSlice({
                 },
                 settled: (state) => {
                     state.isLoading = false
+                }
+            }),
+            login: createAThunk(async (arg: FieldType, {rejectWithValue}) => {
+                const res = await AuthApi.login(arg)
+                if (res.data.resultCode === 0) {
+                    return {isAuth: true, id: res.data.data.userId}
+                } else {
+                    return rejectWithValue({error: res.data.messages[0]})
+                }
+            }, {
+                fulfilled: (state, action) => {
+                    state.isAuth = action.payload.isAuth
+                    state.user.id = action.payload.id
+                }
+            }),
+            logout: createAThunk(async (_arg: undefined, {rejectWithValue}) => {
+                const res = await AuthApi.logout()
+                if (res.data.resultCode === 0) {
+                    return {isAuth: false}
+                } else {
+                    return rejectWithValue({error: res.data.messages[0]})
+                }
+            }, {
+                fulfilled: (state, action) => {
+                    state.isAuth = action.payload.isAuth
                 }
             })
         }

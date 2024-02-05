@@ -3,6 +3,8 @@ import {useEffect} from "react";
 import {useAppDispatch, useAppSelector} from "app/store.ts";
 import {profileActions, ProfileStatus, UserCard} from "features/Profile";
 import {useNotificationAntd} from "shared";
+import {Spin} from "antd";
+import {appSelectors} from "app/app-slice.ts";
 
 
 export const ProfilePage = () => {
@@ -12,7 +14,7 @@ export const ProfilePage = () => {
     const authProfile = useAppSelector(state => state.auth.user.id)
     const profile = useAppSelector(state => state.profile.profile)
     const status = useAppSelector(state => state.profile.status)
-
+    const isLoading = useAppSelector(appSelectors.isLoadingApp)
 
     useEffect(() => {
         if (id) {
@@ -26,13 +28,19 @@ export const ProfilePage = () => {
 
     const statusHandler = (status: string) => dispatch(profileActions.updateStatus(status)).unwrap()
         .then(() => openNotificationWithIcon("success", {message: "Status updated"}))
-        .catch(e => openNotificationWithIcon ("error", {message: e.message}))
+        .catch(e => openNotificationWithIcon("error", {message: e.message}))
 
     return (
         <>
-            {contextHolder}
-            <UserCard {...profile}/>
-            <ProfileStatus editable={!id} status={status} onChange={statusHandler}/>
+            {
+                isLoading ? <Spin fullscreen={true} size={"large"}/> :
+                    <div>
+                        {contextHolder}
+                        <UserCard {...profile}/>
+                        <ProfileStatus editable={!id} status={status} onChange={statusHandler}/>
+
+                    </div>
+            }
         </>
     );
 };

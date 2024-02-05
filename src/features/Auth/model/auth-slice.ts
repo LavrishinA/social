@@ -9,7 +9,6 @@ const createAuthSlice = buildCreateSlice({
 const initialState = {
     user: {} as AuthData,
     isAuth: false as boolean,
-    isLoading: false,
     error: null as string | null
 }
 
@@ -32,22 +31,18 @@ const slice = createAuthSlice({
 
 
             }, {
-                pending: (state) => {
-                    state.isLoading = true
-                },
                 fulfilled: (state, action) => {
                     state.user = {...action.payload}
                     state.isAuth = true
                 },
                 rejected: (state, action) => {
+
                     if (action.payload) {
                         state.error = action.payload.error
                     }
 
                 },
-                settled: (state) => {
-                    state.isLoading = false
-                }
+
             }),
             login: createAThunk(async (arg: FieldType, {rejectWithValue}) => {
                 const res = await AuthApi.login(arg)

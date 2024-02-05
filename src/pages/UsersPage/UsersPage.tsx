@@ -1,10 +1,11 @@
 import {useAppDispatch, useAppSelector} from "app/store.ts";
-import {useEffect} from "react";
+import { useEffect} from "react";
 import {UserList, usersActions} from "features/Users";
 
-export const UsersPage = () => {
+export const UsersPage =() => {
 
     const dispatch = useAppDispatch()
+
     const users = useAppSelector(state => state.users.users)
     const isLoading = useAppSelector<boolean>(state => state.users.isLoading)
     const page = useAppSelector<number>(state => state.users.currentPage)

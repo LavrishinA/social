@@ -6,14 +6,23 @@ export class ProfileApi {
     static getProfile(userId: number) {
         return instance.get<ProfileArgs, AxiosResponse<ProfileArgs>>(`/profile/${userId}`)
     }
+
     static getStatus(userId: number) {
         return instance.get<StatusArg, AxiosResponse<StatusArg>>(`/profile/status/${userId}`)
     }
+
     static updateStatus(status: string) {
-        return instance.put<CommonResponse, AxiosResponse<CommonResponse>, {status: string}>('/profile/status', {status})
+        return instance.put<CommonResponse, AxiosResponse<CommonResponse>, {
+            status: string
+        }>('/profile/status', {status})
     }
+
     static uploadPhoto(formData: FormData) {
-        return instance.put('/profile/photo', formData)
+        return instance.put<CommonResponse<{
+            photos: { small: string | null, large: string | null }
+        }>, AxiosResponse<CommonResponse<{
+            photos: { small: string | null, large: string | null }
+        }>>, FormData>('/profile/photo', formData)
     }
 
 }

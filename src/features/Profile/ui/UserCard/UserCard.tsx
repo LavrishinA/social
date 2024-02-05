@@ -1,22 +1,12 @@
-import {Col, Image, Row, Space, Tooltip, Typography, Upload} from "antd";
-import {ProfileApi, ProfileArgs} from "features/Profile";
-import {FC} from "react";
-import {UploadOutlined} from "@ant-design/icons";
-import s from "./UserCard.module.css"
-import {UploadChangeParam} from "antd/es/upload/interface";
+import {Col, Image, Row, Space, Typography} from "antd";
+import {ProfileArgs} from "features/Profile";
+import {FC, ReactNode} from "react";
 
 
 const {Text, Title} = Typography;
 
-export const UserCard: FC<ProfileArgs> = (props) => {
+export const UserCard: FC<ProfileArgs & {children?: ReactNode}> = (props) => {
 
-    const uploadHandler = (upload: UploadChangeParam) => {
-
-        let formData = new FormData();
-        formData.append("file", upload.fileList[0].originFileObj as Blob)
-        console.log(formData)
-        ProfileApi.uploadPhoto(formData)
-    }
 
     return (
         <Row justify="center" style={{paddingTop: '24px'}}>
@@ -25,7 +15,6 @@ export const UserCard: FC<ProfileArgs> = (props) => {
 
                 <Row gutter={16}>
                     <Col xs={24} md={12}>
-
                         <Image
                             src={props.photos?.large ?? "https://cdn-icons-png.flaticon.com/512/21/21104.png"}
                             alt="#"
@@ -34,19 +23,7 @@ export const UserCard: FC<ProfileArgs> = (props) => {
                         >
 
                         </Image>
-                        <Tooltip title="Set image">
-                            <Upload className={s.upload}
-
-                                    accept={"image/jpeg"}
-                                    showUploadList={false}
-                                    onChange={uploadHandler}
-                                    beforeUpload={() => false}
-                                    multiple={true}
-                                    maxCount={1}
-                            >
-                                <UploadOutlined style={{color: "#1890ff"}}/>
-                            </Upload>
-                        </Tooltip>
+                        {props.children}
                     </Col>
                     <Col xs={24} md={12}>
                         <Space direction="vertical" align="center" style={{padding: '16px'}}>

@@ -5,6 +5,7 @@ import {profileActions, ProfileStatus, UserCard} from "features/Profile";
 import {useNotificationAntd} from "shared";
 import {Spin} from "antd";
 import {appSelectors} from "app/app-slice.ts";
+import {UploadImage} from "features/Profile/ui/UploadImage.tsx";
 
 
 export const ProfilePage = () => {
@@ -30,13 +31,20 @@ export const ProfilePage = () => {
         .then(() => openNotificationWithIcon("success", {message: "Status updated"}))
         .catch(e => openNotificationWithIcon("error", {message: e.message}))
 
+    const uploadHandler = (data: FormData) => dispatch(profileActions.uploadUserImage(data)).unwrap()
+        .then(() => openNotificationWithIcon("success", {message: "Image updated"}))
+        .catch(e => openNotificationWithIcon("error", {message: e.message}))
+
     return (
         <>
             {
                 isLoading ? <Spin fullscreen={true} size={"large"}/> :
                     <div>
                         {contextHolder}
-                        <UserCard {...profile}/>
+                        <UserCard {...profile}>
+                            {!id && <UploadImage onUpload={uploadHandler}/>}
+                        </UserCard>
+
                         <ProfileStatus editable={!id} status={status} onChange={statusHandler}/>
 
                     </div>

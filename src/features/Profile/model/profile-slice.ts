@@ -2,6 +2,7 @@ import {asyncThunkCreator, buildCreateSlice} from "@reduxjs/toolkit";
 import {ProfileApi, ProfileArgs, StatusArg} from "../api/profileApi";
 
 
+
 const createProfileSlice = buildCreateSlice({
     creators: {asyncThunk: asyncThunkCreator},
 })
@@ -46,7 +47,21 @@ const slice = createProfileSlice({
             fulfilled: (state, action) => {
                 state.status = action.payload
             }
+        }),
+        uploadUserImage: create.asyncThunk(async (data: FormData, {rejectWithValue}) => {
+            const res = await ProfileApi.uploadPhoto(data)
+            if (res.data.resultCode === 0) {
+
+                return res.data.data.photos
+            } else {
+                return rejectWithValue(res.data.messages[0])
+            }
+        }, {
+            fulfilled: (state, action) => {
+              state.profile.photos = action.payload
+            }
         })
+
     }),
 })
 

@@ -5,7 +5,11 @@ import {StatusArg} from "features/Profile";
 const {Paragraph} = Typography;
 
 
-export const ProfileStatus = ({status, editable, onChange}: { status: StatusArg, editable: boolean, onChange: (status: string) => void }) => {
+export const ProfileStatus = ({status, editable, onChange}: {
+    status: StatusArg,
+    editable: boolean,
+    onChange: (status: string) => void
+}) => {
     return (
         <div className={s.container}>
             <Paragraph

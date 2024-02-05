@@ -12,6 +12,9 @@ export class ProfileApi {
     static updateStatus(status: string) {
         return instance.put<CommonResponse, AxiosResponse<CommonResponse>, {status: string}>('/profile/status', {status})
     }
+    static uploadPhoto(formData: FormData) {
+        return instance.put('/profile/photo', formData)
+    }
 
 }
 

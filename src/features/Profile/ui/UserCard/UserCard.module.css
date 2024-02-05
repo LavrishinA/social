@@ -1,0 +1,6 @@
+.upload {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    cursor: pointer;
+}
